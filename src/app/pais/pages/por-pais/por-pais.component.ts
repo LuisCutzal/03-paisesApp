@@ -18,8 +18,8 @@ export class PorPaisComponent {
     this.existeError=false;
     console.log(this.termino);
     this.paisService.buscarPais(this.termino)
-    .subscribe((resp)=>{
-      console.log(resp);
+    .subscribe((paises)=>{
+      console.log(paises);
     },(err)=>{
       this.existeError=true;
 

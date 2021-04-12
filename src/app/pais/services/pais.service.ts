@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Contry } from '../interfaces/pais.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class PaisService {
   
   constructor(private http:HttpClient) { }
   
-  buscarPais(termino:string):Observable<any>{
+  buscarPais(termino:string):Observable<Contry[]>{
     const utl=`${this.apiUrl}/name/${termino};`
-    return this.http.get(utl);
+    return this.http.get<Contry[]>(utl);
   }
 
 }
