@@ -4,5 +4,5 @@
             class="form-control"
             [(ngModel)]="termino"
             (input)="teclaPresionada()"
-            placeholder="Buscar Pais..."/>
+            [placeholder]="placeHolder"/> <!-- cuando esta entre corchetes resive una variable que esta en el componente.ts-->
 </form>

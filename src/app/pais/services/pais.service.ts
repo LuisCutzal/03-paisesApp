@@ -21,4 +21,9 @@ export class PaisService {
     const url=`${this.apiUrl}/capital/${termino};`
     return this.http.get<Contry[]>(url);
   }
+
+  buscarIdPais(id:string):Observable<Contry>{
+    const url=`${this.apiUrl}/alpha/${id};`
+    return this.http.get<Contry>(url);
+  }
 }

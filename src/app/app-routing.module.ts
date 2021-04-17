@@ -20,7 +20,7 @@ const routes:Routes=[
         component:PorCapitalComponent
     },
     {
-        path:"pais/:id",
+        path:"pais/:id", //el nombre que se le coloca es lo que resiviremos en los params
         component:VerPaisComponent
     },
     //excepcion
