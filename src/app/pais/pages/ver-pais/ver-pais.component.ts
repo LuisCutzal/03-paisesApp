@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from "rxjs/operators"; //te permite resivir un observable y regresar un observable
+import { switchMap, tap } from "rxjs/operators"; //te permite resivir un observable y regresar un observable
 import { PaisService } from '../../services/pais.service';
-
+import { Contry } from '../../interfaces/pais.interface';
 @Component({
   selector: 'app-ver-pais',
   templateUrl: './ver-pais.component.html',
@@ -10,6 +10,8 @@ import { PaisService } from '../../services/pais.service';
   ]
 })
 export class VerPaisComponent implements OnInit {
+
+  pais!:Contry;
 
   constructor(
     private activateRoute:ActivatedRoute,
@@ -35,13 +37,17 @@ export class VerPaisComponent implements OnInit {
     //usando operadores de RxJ
     this.activateRoute.params
     .pipe(//especificar cualquier cantidad de operadores que trabajaran con el producto del observable: this.activateRoute.params
-      switchMap((para)=>this.PaisService.buscarPais(para.id)) //retorna un observable, se hizo return implicito
+      switchMap(({id})=>this.PaisService.buscarIdPais(id)), //retorna un observable, se hizo return implicito
 //resive el valor del observable anterior y retorna un nuevo observable, ademas se puede usar la desestructuracion de argumentos, como se ve en el codigo anterior
+      tap(console.log) //resive el producto del observable y el tap imprime en consola lo que responde
+      //tambien puede usarse con una funcion de fleca
+      //tap(resp => console.log(resp))
+      //tap(resp=>{console.log(resp);})
     )
-    .subscribe(respuesta=>{
-      console.log(respuesta);
-    });
-
+    //.subscribe(respuesta=>{
+    //console.log(respuesta);
+    //});
+    .subscribe( pais=> this.pais = pais);
 
 
 
