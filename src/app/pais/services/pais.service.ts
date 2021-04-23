@@ -26,4 +26,9 @@ export class PaisService {
     const url=`${this.apiUrl}/alpha/${id};`
     return this.http.get<Contry>(url);
   }
+
+  buscarRegion(region:string):Observable<Contry[]>{
+    const url=`${this.apiUrl}/region/${region};`
+    return this.http.get<Contry[]>(url);
+  }
 }

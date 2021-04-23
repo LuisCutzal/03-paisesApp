@@ -21,7 +21,7 @@ export class PorPaisComponent {
     this.termino=termino;
     
     this.paisService.buscarPais(termino)
-    .subscribe((argumento)=>{
+    .subscribe((argumento)=>{ //para consumirlo tengo que suscribirme
       console.log(argumento);
       this.paises=argumento;
     },(err)=>{

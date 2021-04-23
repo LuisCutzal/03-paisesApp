@@ -5,6 +5,7 @@
 
 <div class="row">
     <div class="col">
+        <!--class="btn btn-outline-primary"-->
         <!--[class.btn-primary]="region==regionActiva"-->
         <!--[ngClass]="{
                     'btn-primary':regionActiva==region,
@@ -16,5 +17,12 @@
                 (click)="activarRegion(region)"> <!--se esta utilizando la variable local region que se creo en el *ngfor-->
             {{region | titlecase}}
         </button>
+    </div>
+</div>
+
+<div *ngIf="paises.length>0" 
+    class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
     </div>
 </div>
